@@ -1,0 +1,35 @@
+Downloaded 3 PDF files:
+- TASER and Axon Body camera records (St. Louis Metropolitan Police Department) (www.muckrock.com/foi/st-louis-337/taser-and-axon-body-camera-records-st-louis-metropolitan-police-department-34651/), which are records pertaining to “TASER International, Axon body cameras, and Evidence.com” used at the St. Louis Metropolitan Police Department.
+- New York - Governor Staff list, Nathan - Docs Sent - 6.15.17 (www.muckrock.com/foi/new-york-16/new-york-governor-staff-list-37497/), which is a full list of, or records that reflect, the names and job titles for all employees of the Office of the New York Governor.
+- Lobbying Compliance - SUBCHAPTER F--RECORDS (https://www.muckrock.com/foi/united-states-of-america-10/lobbying-compliance-38787/), which are records from the Government Accountability Office, concerning lobbyist activities.
+
+1.
+- For the TASER and Axon Body camera records, I used Tabula to extract them into several csv files. The reason why I couldn’t make them into one csv file directly is because the file’s columns are messy: Columns that should be on the right are instead below; the values in different columns are so close together that Tabula squashes them together or places them in wrong columns. 
+- The exported TASER and Axon Body camera records file had no columns, so I had added them.
+- I left out the “Email address” column because its values were splintered.
+- Most of the column names were also splintered, making them very hard to organize. Some of them were assumed from other documents.
+- I left out columns with no values in it.
+- In the “Badge ID” column there were some non-numeric values (and many other values in other columns had the same problem), but they were in the original data so I decided to leave them.
+- I did some basic cleaning in Tabula before I exported the data into csv files.
+- After I exported the columns one by one, I used Jupiter notebook to concatenate them.
+-  With the cleaned data, I found people wth the top 5 total evidence.
+
+2.
+- For the “New York - Governor Staff list, Nathan - Docs Sent” file, I used Tabula to extract its data into several csv files. For similar reasons as above, I couldn’t make them into one csv file directly. The data is divided according to roles within the government, and again the values in different columns are so close together that Tabula is confused.
+- After I exported the data by its divisions, I used Jupiter notebook to concatenate them into one dataframe.
+- I cleaned the data frame by reseting the index and removing empty rows, and I saved it as csv file.
+- With the cleaned file, I found the top 3 division with largest number of staff members.
+
+3.
+- For the “Lobbying Compliance” file, I used “pdf2txt.py” to extract text data. In the terminal, I entered the following: `pdf2txt.py Lobbying_Compliance_SUBCHAPTER_F_RECORDS.pdf -o Lobbying_Compliance_SUBCHAPTER_F_RECORDS_converted.txt`
+- Like above, I used Jupiter notebook to clean the text file. I removed all the “\n”s and rejoined the split lines.
+- With the cleaned text, I found all the FR (F - RECORDS) documents referred in it.
+
+
+
+
+
+
+
+
+
